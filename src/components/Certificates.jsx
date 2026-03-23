@@ -12,24 +12,17 @@ const certs = [
         status: 'VERIFIED_RECORD'
     },
     {
-        id: 'CR-012',
-        title: 'EXCEL FOR BEGINNERS',
-        issuer: 'DATA ANALYTICS TRAINING',
-        file: '/certs/Excel for Beginners.jpg.jpeg',
+        id: 'CR-002',
+        title: 'FROM DATA TO INSIGHTS',
+        issuer: 'ANALYTICS SPECIALIZATION',
+        file: '/certs/cert_insights.pdf',
         status: 'SYSTEM_VALIDATED'
     },
     {
-        id: 'CR-011',
-        title: 'CODE-A-HAUNT WINNER',
-        issuer: 'IIIT HACKATHON',
-        file: '/certs/Code-A-Haunt.png',
-        status: 'VERIFIED_RECORD'
-    },
-    {
-        id: 'CR-014',
-        title: 'PEER TO PEER NETWORKS',
-        issuer: 'NPTEL ONLINE CERTIFICATION',
-        file: '/certs/peer to peer and local network.jpeg',
+        id: 'CR-006',
+        title: 'PRIVACY & SECURITY',
+        issuer: 'CYBER SECURITY SPECIALIZATION',
+        file: '/certs/Privacy and Security in Online Social Media.pdf',
         status: 'SYSTEM_VALIDATED'
     }
 ];
