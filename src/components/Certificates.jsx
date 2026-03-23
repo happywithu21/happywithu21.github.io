@@ -12,17 +12,24 @@ const certs = [
         status: 'VERIFIED_RECORD'
     },
     {
-        id: 'CR-002',
-        title: 'FROM DATA TO INSIGHTS',
-        issuer: 'ANALYTICS SPECIALIZATION',
-        file: '/certs/cert_insights.pdf',
+        id: 'CR-012',
+        title: 'EXCEL FOR BEGINNERS',
+        issuer: 'DATA ANALYTICS TRAINING',
+        file: '/certs/Excel for Beginners.jpg.jpeg',
         status: 'SYSTEM_VALIDATED'
     },
     {
-        id: 'CR-006',
-        title: 'PRIVACY & SECURITY',
-        issuer: 'CYBER SECURITY SPECIALIZATION',
-        file: '/certs/Privacy and Security in Online Social Media.pdf',
+        id: 'CR-011',
+        title: 'CODE-A-HAUNT WINNER',
+        issuer: 'IIIT HACKATHON',
+        file: '/certs/Code-A-Haunt.png',
+        status: 'VERIFIED_RECORD'
+    },
+    {
+        id: 'CR-014',
+        title: 'PEER TO PEER NETWORKS',
+        issuer: 'NPTEL ONLINE CERTIFICATION',
+        file: '/certs/peer to peer and local network.jpeg',
         status: 'SYSTEM_VALIDATED'
     }
 ];
@@ -30,6 +37,8 @@ const certs = [
 
 export default function Certificates() {
     const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const isImage = (fileName) => /\.(jpe?g|png|gif|bmp|webp)$/i.test(fileName);
 
     return (
         <section className="container" id="certificates" style={{ padding: 'clamp(5vh, 10vh, 15vh) 0' }}>
@@ -42,10 +51,10 @@ export default function Certificates() {
 
             <div style={{ 
                 display: 'grid', 
-                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))', 
+                gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))', 
                 gap: '1.5vw', 
                 marginBottom: '4rem',
-                maxWidth: '1200px',
+                maxWidth: '1250px',
                 margin: '0 auto 4rem auto',
                 justifyContent: 'center'
             }}>
@@ -67,40 +76,61 @@ export default function Certificates() {
                             height: '100%'
                         }}
                     >
-                        {/* Certificate Preview — Embedded PDF */}
+                        {/* Certificate Preview — Image or Embedded PDF */}
                         <div style={{ 
                             width: '100%', 
-                            height: '240px', 
+                            height: '220px', 
                             overflow: 'hidden',
                             position: 'relative',
-                            background: '#f5f5f5',
+                            background: '#111',
                             borderBottom: '1px solid rgba(255, 255, 255, 0.05)'
                         }}>
-                            <object
-                                data={`${cert.file}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
-                                type="application/pdf"
-                                style={{
-                                    width: 'calc(100% + 20px)',
-                                    height: 'calc(100% + 20px)',
-                                    border: 'none',
-                                    pointerEvents: 'none',
-                                    overflow: 'hidden'
-                                }}
-                            >
-                                {/* Fallback if object doesn't render */}
-                                <iframe
-                                    src={`${cert.file}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
-                                    scrolling="no"
+                            {isImage(cert.file) ? (
+                                <img 
+                                    src={cert.file} 
+                                    alt={cert.title}
                                     style={{
-                                        width: 'calc(100% + 20px)',
-                                        height: 'calc(100% + 20px)',
+                                        width: '100%',
+                                        height: '100%',
+                                        objectFit: 'cover',
+                                        opacity: 1,
+                                        display: 'block'
+                                    }}
+                                />
+                            ) : (
+                                <object
+                                    data={`${cert.file}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
+                                    type="application/pdf"
+                                    style={{
+                                        width: '100%',
+                                        height: '100%',
                                         border: 'none',
                                         pointerEvents: 'none',
                                         overflow: 'hidden'
                                     }}
-                                    title={cert.title}
-                                />
-                            </object>
+                                >
+                                    {/* Fallback for mobile/browsers that don't support PDF embedding */}
+                                    <div style={{
+                                        width: '100%',
+                                        height: '100%',
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        gap: '0.8rem',
+                                        background: 'rgba(255, 85, 0, 0.05)',
+                                        color: 'var(--brand-orange)',
+                                        padding: '1.5rem',
+                                        textAlign: 'center'
+                                    }}>
+                                        <Award size={42} strokeWidth={1} />
+                                        <span className="mono" style={{ fontSize: '9px', opacity: 0.7 }}>TECHNICAL DOCUMENT</span>
+                                        <div style={{ fontSize: '9px', background: 'rgba(255, 85, 0, 0.1)', padding: '4px 12px', borderRadius: '100px', border: '1px solid rgba(255, 85, 0, 0.2)' }}>
+                                            PDF PREVIEW
+                                        </div>
+                                    </div>
+                                </object>
+                            )}
                             
                             <div style={{ position: 'absolute', top: '15px', left: '15px', zIndex: 2 }}>
                                 <span className="mono" style={{ 
@@ -118,7 +148,7 @@ export default function Certificates() {
 
                         {/* Certificate Info Body */}
                         <div style={{ padding: '1.8rem', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                            <h3 style={{ fontSize: '1.4rem', fontWeight: 900, marginBottom: '0.6rem', color: '#fff', textTransform: 'uppercase' }}>
+                            <h3 style={{ fontSize: '1.3rem', fontWeight: 900, marginBottom: '0.6rem', color: '#fff', textTransform: 'uppercase' }}>
                                 {cert.title}
                             </h3>
                             <p className="mono" style={{ fontSize: '11px', opacity: 0.4, marginBottom: '1.5rem', letterSpacing: '0.05em' }}>
