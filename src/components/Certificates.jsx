@@ -91,38 +91,16 @@ export default function Certificates() {
                                     }}
                                 />
                             ) : (
-                                <object
-                                    data={`${cert.file}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
-                                    type="application/pdf"
+                                <iframe
+                                    src={`${cert.file}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
+                                    title={cert.title}
                                     style={{
                                         width: '100%',
                                         height: '100%',
                                         border: 'none',
                                         pointerEvents: 'none',
-                                        overflow: 'hidden'
                                     }}
-                                >
-                                    {/* Fallback for mobile/browsers that don't support PDF embedding */}
-                                    <div style={{
-                                        width: '100%',
-                                        height: '100%',
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        gap: '0.8rem',
-                                        background: 'rgba(255, 85, 0, 0.05)',
-                                        color: 'var(--brand-orange)',
-                                        padding: '1.5rem',
-                                        textAlign: 'center'
-                                    }}>
-                                        <Award size={42} strokeWidth={1} />
-                                        <span className="mono" style={{ fontSize: '9px', opacity: 0.7 }}>TECHNICAL DOCUMENT</span>
-                                        <div style={{ fontSize: '9px', background: 'rgba(255, 85, 0, 0.1)', padding: '4px 12px', borderRadius: '100px', border: '1px solid rgba(255, 85, 0, 0.2)' }}>
-                                            PDF PREVIEW
-                                        </div>
-                                    </div>
-                                </object>
+                                />
                             )}
                             
                             <div style={{ position: 'absolute', top: '15px', left: '15px', zIndex: 2 }}>
