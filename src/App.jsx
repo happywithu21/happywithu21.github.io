@@ -40,7 +40,7 @@ function App() {
       });
     }, observerOptions);
 
-    const sections = ['about', 'skills', 'education', 'certificates', 'projects', 'achievements', 'contact'];
+    const sections = ['about', 'education', 'skills', 'certificates', 'projects', 'achievements', 'contact'];
     sections.forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
@@ -67,8 +67,8 @@ function App() {
 
   const navItems = [
     { id: 'about', label: 'ABOUT' },
-    { id: 'skills', label: 'SKILLS' },
     { id: 'education', label: 'EDUCATION' },
+    { id: 'skills', label: 'SKILLS' },
     { id: 'certificates', label: 'CERTIFICATES' },
     { id: 'projects', label: 'PROJECTS' },
     { id: 'achievements', label: 'ACHIEVEMENTS' },
