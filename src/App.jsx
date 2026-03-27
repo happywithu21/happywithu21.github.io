@@ -8,6 +8,7 @@ import Education from './components/Education';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Certificates from './components/Certificates';
+import Achievements from './components/Achievements';
 import Contact from './components/Contact';
 import './index.css';
 
@@ -155,6 +156,9 @@ function App() {
 
           <div style={{ height: '10vh', minHeight: '100px' }} />
           <div id="projects"><Projects /></div>
+
+          <div style={{ height: '10vh', minHeight: '100px' }} />
+          <Achievements />
 
           <div style={{ height: '5vh', minHeight: '50px' }} />
           <div id="contact"><Contact /></div>
