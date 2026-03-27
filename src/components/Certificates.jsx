@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Award, FileText, CheckCircle, Plus } from 'lucide-react';
 import CertificateModal from './CertificateModal';
@@ -30,6 +30,14 @@ const certs = [
 
 export default function Certificates() {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+
+    useEffect(() => {
+        const check = () => setIsMobile(window.innerWidth < 768 || /iPhone|iPad|iPod|Android/i.test(navigator.userAgent));
+        check();
+        window.addEventListener('resize', check);
+        return () => window.removeEventListener('resize', check);
+    }, []);
 
     const isImage = (fileName) => /\.(jpe?g|png|gif|bmp|webp)$/i.test(fileName);
 
@@ -90,6 +98,36 @@ export default function Certificates() {
                                         display: 'block'
                                     }}
                                 />
+                            ) : isMobile ? (
+                                /* Mobile fallback — PDFs can't embed on mobile */
+                                <a
+                                    href={cert.file}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    style={{
+                                        display: 'flex',
+                                        flexDirection: 'column',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        height: '100%',
+                                        gap: '0.8rem',
+                                        textDecoration: 'none',
+                                        background: 'linear-gradient(135deg, rgba(255,85,0,0.06) 0%, rgba(0,0,0,0) 100%)',
+                                        cursor: 'pointer'
+                                    }}
+                                >
+                                    <div style={{
+                                        width: '52px', height: '52px', borderRadius: '50%',
+                                        border: '1px solid rgba(255,85,0,0.4)',
+                                        display: 'flex', alignItems: 'center', justifyContent: 'center',
+                                        background: 'rgba(255,85,0,0.08)'
+                                    }}>
+                                        <Award size={24} color="var(--brand-orange)" strokeWidth={1.5} />
+                                    </div>
+                                    <span className="mono" style={{ fontSize: '10px', color: 'var(--brand-orange)', opacity: 0.8 }}>
+                                        TAP TO VIEW CERTIFICATE
+                                    </span>
+                                </a>
                             ) : (
                                 <iframe
                                     src={`${cert.file}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
