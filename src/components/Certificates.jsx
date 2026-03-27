@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { Award, FileText, CheckCircle, Plus } from 'lucide-react';
+import { Award, Plus } from 'lucide-react';
 import CertificateModal from './CertificateModal';
 
 const certs = [
@@ -87,57 +87,25 @@ export default function Certificates() {
                             borderBottom: '1px solid rgba(255, 255, 255, 0.05)'
                         }}>
                             {isImage(cert.file) ? (
-                                <img 
-                                    src={cert.file} 
+                                <img
+                                    src={cert.file}
                                     alt={cert.title}
-                                    style={{
-                                        width: '100%',
-                                        height: '100%',
-                                        objectFit: 'cover',
-                                        opacity: 1,
-                                        display: 'block'
-                                    }}
+                                    style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
                                 />
                             ) : isMobile ? (
-                                /* Mobile fallback — PDFs can't embed on mobile */
-                                <a
-                                    href={cert.file}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    style={{
-                                        display: 'flex',
-                                        flexDirection: 'column',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        height: '100%',
-                                        gap: '0.8rem',
-                                        textDecoration: 'none',
-                                        background: 'linear-gradient(135deg, rgba(255,85,0,0.06) 0%, rgba(0,0,0,0) 100%)',
-                                        cursor: 'pointer'
-                                    }}
+                                <a href={cert.file} target="_blank" rel="noopener noreferrer"
+                                    style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100%', gap: '0.8rem', textDecoration: 'none', background: 'rgba(255,85,0,0.04)' }}
                                 >
-                                    <div style={{
-                                        width: '52px', height: '52px', borderRadius: '50%',
-                                        border: '1px solid rgba(255,85,0,0.4)',
-                                        display: 'flex', alignItems: 'center', justifyContent: 'center',
-                                        background: 'rgba(255,85,0,0.08)'
-                                    }}>
+                                    <div style={{ width: '52px', height: '52px', borderRadius: '50%', border: '1px solid rgba(255,85,0,0.4)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                                         <Award size={24} color="var(--brand-orange)" strokeWidth={1.5} />
                                     </div>
-                                    <span className="mono" style={{ fontSize: '10px', color: 'var(--brand-orange)', opacity: 0.8 }}>
-                                        TAP TO VIEW CERTIFICATE
-                                    </span>
+                                    <span className="mono" style={{ fontSize: '10px', color: 'var(--brand-orange)', opacity: 0.8 }}>TAP TO VIEW CERTIFICATE</span>
                                 </a>
                             ) : (
                                 <iframe
                                     src={`${cert.file}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
                                     title={cert.title}
-                                    style={{
-                                        width: '100%',
-                                        height: '100%',
-                                        border: 'none',
-                                        pointerEvents: 'none',
-                                    }}
+                                    style={{ width: '100%', height: '100%', border: 'none', pointerEvents: 'none' }}
                                 />
                             )}
                             
