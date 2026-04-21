@@ -20,7 +20,7 @@ const projects = [
         image: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&q=80&w=1000',
         tech: ['FastAPI', 'React', 'PostgreSQL', 'Docker'],
         glow: 'rgba(0, 242, 255, 0.3)',
-        link: 'https://github.com/happywithu21/gov-scheme-recommender'
+        link: 'https://yojanamitra-seven.vercel.app/'
     },
     {
         id: '03',
