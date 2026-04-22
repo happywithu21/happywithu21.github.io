@@ -9,6 +9,7 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Certificates from './components/Certificates';
 import Achievements from './components/Achievements';
+import FAQ from './components/FAQ';
 import Contact from './components/Contact';
 import './index.css';
 
@@ -40,7 +41,7 @@ function App() {
       });
     }, observerOptions);
 
-    const sections = ['about', 'education', 'skills', 'certificates', 'projects', 'achievements', 'contact'];
+    const sections = ['about', 'education', 'skills', 'certificates', 'projects', 'achievements', 'faq', 'contact'];
     sections.forEach((id) => {
       const el = document.getElementById(id);
       if (el) observer.observe(el);
@@ -72,6 +73,7 @@ function App() {
     { id: 'certificates', label: 'CERTIFICATES' },
     { id: 'projects', label: 'PROJECTS' },
     { id: 'achievements', label: 'ACHIEVEMENTS' },
+    { id: 'faq', label: 'FAQ' },
     { id: 'contact', label: 'CONTACT' },
   ];
 
@@ -161,6 +163,9 @@ function App() {
 
           <div style={{ height: '10vh', minHeight: '100px' }} />
           <Achievements />
+
+          <div style={{ height: '10vh', minHeight: '100px' }} />
+          <FAQ />
 
           <div style={{ height: '5vh', minHeight: '50px' }} />
           <div id="contact"><Contact /></div>
